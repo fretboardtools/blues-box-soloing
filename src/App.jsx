@@ -14,14 +14,14 @@ const THEMES = {
     scrollBg:"#111520", scrollTh:"#1a2030",
   },
   light: {
-    bg:"#f3f5f8", surface:"#ffffff", surface2:"#eef1f5",
-    border:"#dde1eb", borderHi:"#c5ccd8",
-    text:"#1a2030", textHi:"#0a0c12", textMid:"#2d3748",
-    textLo:"#4a5568", textMute:"#6b7280", textDead:"#c5ccd8",
-    fretStr:"#c0c8d8", fretBar:"#d0d8e8", fretHi:"#9aa3b8",
-    fretMark:"#c0c8d8", fretNum:"#8899aa",
-    nutColor:"#5a6880", badge:"#fef3c7",
-    scrollBg:"#eef1f5", scrollTh:"#c5ccd8",
+    bg:"#ffffff", surface:"#ffffff", surface2:"#f8f8f6",
+    border:"#e8e8e4", borderHi:"#d4d4ce",
+    text:"#1a1a18", textHi:"#000000", textMid:"#3a3a36",
+    textLo:"#6b6b65", textMute:"#9a9a94", textDead:"#d4d4ce",
+    fretStr:"#d4d4ce", fretBar:"#e8e8e4", fretHi:"#9a9a94",
+    fretMark:"#d4d4ce", fretNum:"#9a9a94",
+    nutColor:"#5a6880", badge:"#f2f2ef",
+    scrollBg:"#f8f8f6", scrollTh:"#d4d4ce",
   },
 };
 
@@ -478,23 +478,23 @@ export default function BluesBoxSoloing() {
         <div style={{ marginBottom:"22px", display:"flex", alignItems:"flex-start", justifyContent:"space-between", gap:"12px" }}>
           <div>
             <div style={{ display:"flex", alignItems:"baseline", gap:"10px", marginBottom:"4px" }}>
-              <h1 style={{ fontFamily:"'DM Sans',sans-serif", fontSize:"clamp(22px,5vw,32px)", fontWeight:"700", margin:0, color:T.textHi, letterSpacing:"-0.5px" }}>
+              <h1 style={{ fontFamily:"'DM Sans',sans-serif", fontSize:"clamp(20px,5vw,28px)", fontWeight:"800", margin:0, color:T.textHi, letterSpacing:"-0.5px", textTransform:"uppercase" }}>
                 Blues Box Soloing
               </h1>
-              <span style={{ fontFamily:"'JetBrains Mono',monospace", fontSize:"9px", color:"#F59E0B", background:T.badge, padding:"2px 7px", borderRadius:"4px", letterSpacing:"1px" }}>UNLOCK THE GUITAR</span>
+              <span style={{ fontFamily:"'JetBrains Mono',monospace", fontSize:"9px", color:T.textLo, background:T.surface2, padding:"2px 6px", borderRadius:"2px", letterSpacing:"1px", border:`1px solid ${T.border}` }}>UNLOCK THE GUITAR</span>
             </div>
             <p style={{ color:T.textMute, fontSize:"13px", margin:0 }}>
               Stay in 4 frets. Minor pentatonic as your shell. One note per chord change outlines the whole progression.
             </p>
           </div>
           <button onClick={() => setIsDark(d => !d)} style={{
-            flexShrink:0, padding:"8px 14px", borderRadius:"20px",
-            border:`1.5px solid ${T.border}`, background:T.surface, color:T.textMid,
-            fontSize:"13px", display:"flex", alignItems:"center", gap:"6px",
-            transition:"all 0.15s", whiteSpace:"nowrap",
+            flexShrink:0, padding:"6px 12px", borderRadius:"4px",
+            border:`1px solid ${T.border}`, background:T.surface2, color:T.textMid,
+            fontSize:"12px", display:"flex", alignItems:"center", gap:"5px",
+            cursor:"pointer", whiteSpace:"nowrap",
           }}>
-            <span style={{ fontSize:"16px" }}>{isDark ? "☀️" : "🌙"}</span>
-            <span style={{ fontSize:"11px", fontFamily:"'JetBrains Mono',monospace", letterSpacing:"0.5px" }}>{isDark ? "Light" : "Dark"}</span>
+            <span style={{ fontSize:"14px" }}>{isDark ? "☀️" : "🌙"}</span>
+            <span style={{ fontSize:"10px", fontFamily:"'JetBrains Mono',monospace" }}>{isDark ? "Light" : "Dark"}</span>
           </button>
         </div>
 
@@ -524,9 +524,9 @@ export default function BluesBoxSoloing() {
                 {Object.entries(FORMS).map(([id, f]) => (
                   <button key={id} onClick={() => handleFormChange(id)} style={{
                     padding:"7px 14px", borderRadius:"8px", fontSize:"12px", fontWeight:"600",
-                    border: selectedForm===id ? `1.5px solid #F59E0B` : `1.5px solid ${T.border}`,
-                    background: selectedForm===id ? (isDark?"#451a03":"#fef3c7") : T.surface2,
-                    color: selectedForm===id ? "#F59E0B" : T.textMute,
+                    border: selectedForm===id ? `1.5px solid ${T.textHi}` : `1.5px solid ${T.border}`,
+                    background: selectedForm===id ? T.textHi : T.surface2,
+                    color: selectedForm===id ? T.surface : T.textMute,
                     transition:"all 0.1s",
                   }}>{f.name}</button>
                 ))}
